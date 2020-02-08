@@ -2,6 +2,7 @@
   "name": "avg-share-price-calculator",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://vishalnagda1.github.io/average-share-price-calculator",
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
