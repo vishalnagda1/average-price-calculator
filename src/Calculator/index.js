@@ -1,7 +1,12 @@
 import React from 'react';
 
 function BasicUI () {
-    return <h1>Hello World!!!</h1>
+    return(
+        <div>
+            <input type="number" name="price" placeholder="Price" />
+            <input type="number" name="quantity" placeholder="Quantity" />
+        </div>
+    );
 }
 
 export default BasicUI;
