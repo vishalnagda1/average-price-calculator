@@ -22,13 +22,14 @@ export default class Calculator extends React.Component {
         });
     }
 
-    // removeRow = () => {
-    //     this.setState(state => {
-    //         const {averagePrice} = state;
-    //         averagePrice.pop();
-    //         return averagePrice;
-    //     });
-    // }
+    removeRow = () => {
+        this.setState(state => {
+            let {averagePrice, keyTracker} = state;
+            delete(averagePrice[keyTracker]);
+            keyTracker -= 1;
+            return {averagePrice, keyTracker};
+        });
+    }
     
     render() {
         const averagePriceKeys = Object.keys(this.state.averagePrice);
