@@ -52,10 +52,11 @@ export default class Calculator extends React.Component {
         const {totalPrice, totalShares} = averagePrice;
         return(
             <div>
-                <h1>Total Amount : {totalPrice}</h1>
+                <h1>Total Investment : {(totalPrice).toFixed(2)}</h1>
                 <h1>Total Shares : {totalShares}</h1>
-                <h1>Average Price : {totalPrice / totalShares || 0.0}</h1>
+                <h1>Average Price : {(totalPrice / totalShares || 0.0).toFixed(2)}</h1>
                 {priceQuantityArr.map(priceQuantity => priceQuantity)}
+                <br />
                 <button onClick={this.addRow}>Add Row</button>
             </div>
         );

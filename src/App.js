@@ -12,7 +12,7 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          To calculate the share's average price.
+          Calculate the average price of shares before actual investment.
         </p>
         <BasicUI />
       </div>
