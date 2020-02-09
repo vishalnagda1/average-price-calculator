@@ -2,57 +2,58 @@ import React from 'react';
 
 export default class Calculator extends React.Component {
     state = {
-        averagePrice: [{totalPrice: 0.0, totalShares: 0}]
+        averagePrice: {0: {totalPrice: 0.0, totalShares: 0}}
     }
 
-    handleChange = (index, totalPrice = 0.0, totalShares = 0) => {
-        const averagePrice = [...this.state.averagePrice];
-        averagePrice[index]['totalPrice'] = totalPrice;
-        averagePrice[index]['totalShares'] = totalShares;
-        this.setState(state => ({averagePrice}));
-    }
+    // handleChange = (index, totalPrice = 0.0, totalShares = 0) => {
+    //     const averagePrice = [...this.state.averagePrice];
+    //     averagePrice[index]['totalPrice'] = totalPrice;
+    //     averagePrice[index]['totalShares'] = totalShares;
+    //     this.setState(state => ({averagePrice}));
+    // }
 
-    addRow = () => {
-        this.setState(state => {
-            const {averagePrice} = state;
-            averagePrice.push({totalPrice: 0.0, totalShares: 0});
-            return averagePrice;
-        });
-    }
+    // addRow = () => {
+    //     this.setState(state => {
+    //         const {averagePrice} = state;
+    //         averagePrice.push({totalPrice: 0.0, totalShares: 0});
+    //         return averagePrice;
+    //     });
+    // }
 
-    removeRow = () => {
-        this.setState(state => {
-            const {averagePrice} = state;
-            averagePrice.pop();
-            return averagePrice;
-        });
-    }
+    // removeRow = () => {
+    //     this.setState(state => {
+    //         const {averagePrice} = state;
+    //         averagePrice.pop();
+    //         return averagePrice;
+    //     });
+    // }
     
     render() {
-        const priceQuantityArr = this.state.averagePrice.map((_, index) =>
-            <React.Fragment key={index}>
-                <PriceQuantity index={index} handleChange={this.handleChange} />
+        const priceQuantityArr = Object.keys(this.state.averagePrice).map((key) =>
+            <React.Fragment key={key}>
+                <PriceQuantity index={key} handleChange={this.handleChange} data={this.state.averagePrice[key]} />
                 <br />
             </React.Fragment>
         );
 
-        const removeButton = () => {
-            return this.state.averagePrice.length > 1 && <button onClick={this.removeRow}>Remove Row</button>
-        }
-        const averagePrice = this.state.averagePrice.reduce((acc, cur) => {
-            const totalPrice = acc.totalPrice + cur.totalPrice || 0.0;
-            const totalShares = acc.totalShares + cur.totalShares || 0;
-            return {totalPrice, totalShares};
-        });
-        const {totalPrice, totalShares} = averagePrice;
+        // const removeButton = () => {
+        //     return this.state.averagePrice.length > 1 && <button onClick={this.removeRow}>Remove Row</button>
+        // }
+        // const averagePrice = this.state.averagePrice.reduce((acc, cur) => {
+        //     const totalPrice = acc.totalPrice + cur.totalPrice || 0.0;
+        //     const totalShares = acc.totalShares + cur.totalShares || 0;
+        //     return {totalPrice, totalShares};
+        // });
+        // const {totalPrice, totalShares} = averagePrice;
+        const {totalPrice, totalShares} = 0;
         return(
             <div>
                 <h1>Total Amount : {totalPrice}</h1>
                 <h1>Total Shares : {totalShares}</h1>
                 <h1>Average Price : {totalPrice / totalShares || 0.0}</h1>
                 {priceQuantityArr.map(priceQuantity => priceQuantity)}
-                <button onClick={this.addRow}>Add Row</button>
-                {removeButton()}
+                {/* <button onClick={this.addRow}>Add Row</button> */}
+                {/* {removeButton()} */}
             </div>
         );
     }
