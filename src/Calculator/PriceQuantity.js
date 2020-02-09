@@ -36,7 +36,7 @@ export default class PriceQuantity extends React.Component {
                 onChange={this.handlePriceChange} />{' * '}
                 <input type="number" name="quantity" placeholder="Quantity"
                 onChange={this.handleQuantityChange} />
-                {` = ${this.state.totalPrice} `}
+                {` = ${this.state.totalPrice.toFixed(2)} `}
                 {removeButton}
             </React.Fragment>
         );
