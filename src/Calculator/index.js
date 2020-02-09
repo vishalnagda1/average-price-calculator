@@ -11,14 +11,37 @@ class BasicUI extends React.Component {
         averagePrice[index]['totalShares'] = totalShares;
         this.setState(state => ({averagePrice}));
     }
+
+    addRow = () => {
+        this.setState(state => {
+            const {averagePrice} = state;
+            averagePrice.push({totalPrice: 0.0, totalShares: 0});
+            return averagePrice;
+        });
+    }
+
+    removeRow = () => {
+        this.setState(state => {
+            const {averagePrice} = state;
+            averagePrice.pop();
+            return averagePrice;
+        });
+    }
     
     render() {
         const priceQuantityArr = this.state.averagePrice.map((_, index) =>
-            <PriceQuantity key={index} index={index} handleChange={this.handleChange} />
+            <React.Fragment key={index}>
+                <PriceQuantity index={index} handleChange={this.handleChange} />
+                <br />
+            </React.Fragment>
         );
+
+        const removeButton = () => {
+            return this.state.averagePrice.length > 1 && <button onClick={this.removeRow}>Remove Row</button>
+        }
         const averagePrice = this.state.averagePrice.reduce((acc, cur) => {
-            const totalPrice = acc.totalPrice + cur.totalPrice;
-            const totalShares = acc.totalShares + cur.totalShares;
+            const totalPrice = acc.totalPrice + cur.totalPrice || 0.0;
+            const totalShares = acc.totalShares + cur.totalShares || 0;
             return {totalPrice, totalShares};
         });
         const {totalPrice, totalShares} = averagePrice;
@@ -28,6 +51,8 @@ class BasicUI extends React.Component {
                 <h1>Total Shares : {totalShares}</h1>
                 <h1>Average Price : {totalPrice / totalShares || 0.0}</h1>
                 {priceQuantityArr.map(priceQuantity => priceQuantity)}
+                <button onClick={this.addRow}>Add Row</button>
+                {removeButton()}
             </div>
         );
     }
