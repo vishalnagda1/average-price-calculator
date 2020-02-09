@@ -18,7 +18,6 @@ class BasicUI extends React.Component {
             const totalShares = acc.totalShares + cur.totalShares;
             return {totalPrice, totalShares};
         });
-        console.log(averagePrice);
         const {totalPrice, totalShares} = averagePrice;
         return(
             <div>
@@ -54,8 +53,8 @@ class PriceQuantity extends React.Component {
     }
    
     handleQuantityChange = event => {
-        const value = event.target.value
-        this.setState({quantity: value || 0});
+        const value = parseInt(event.target.value, 0)
+        this.setState({quantity: value});
         this.updateTotalPrice();
     }
 
@@ -63,10 +62,10 @@ class PriceQuantity extends React.Component {
         return(
             <React.Fragment>
                 <input type="number" name="price" placeholder="Price"
-                onChange={this.handlePriceChange} />
+                onChange={this.handlePriceChange} />{' * '}
                 <input type="number" name="quantity" placeholder="Quantity"
                 onChange={this.handleQuantityChange} />
-                <p>{this.state.totalPrice}</p>
+                {` = ${this.state.totalPrice}`}
             </React.Fragment>
         );
     }
