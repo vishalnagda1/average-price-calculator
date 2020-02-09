@@ -22,15 +22,6 @@ export default class Calculator extends React.Component {
         });
     }
 
-    removeRow = () => {
-        this.setState(state => {
-            let {averagePrice, keyTracker} = state;
-            delete(averagePrice[keyTracker]);
-            keyTracker -= 1;
-            return {averagePrice, keyTracker};
-        });
-    }
-
     deleteRow = event => {
         const key = event.target.getAttribute('key-id');
         this.setState(state => {
@@ -50,9 +41,6 @@ export default class Calculator extends React.Component {
             </React.Fragment>
         );
 
-        const removeButton = () => {
-            return averagePriceKeys.length > 1 && <button onClick={this.removeRow}>Remove Row</button>
-        }
         const averagePriceArr = averagePriceKeys.map(key => this.state.averagePrice[key]);
         const averagePrice = averagePriceArr.reduce((acc, cur) => {
             const totalPrice = acc.totalPrice + cur.totalPrice || 0.0;
@@ -68,7 +56,6 @@ export default class Calculator extends React.Component {
                 <h1>Average Price : {totalPrice / totalShares || 0.0}</h1>
                 {priceQuantityArr.map(priceQuantity => priceQuantity)}
                 <button onClick={this.addRow}>Add Row</button>
-                {removeButton()}
             </div>
         );
     }
