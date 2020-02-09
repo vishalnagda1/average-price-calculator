@@ -13,6 +13,9 @@ class BasicUI extends React.Component {
     }
     
     render() {
+        const priceQuantityArr = this.state.averagePrice.map((_, index) =>
+            <PriceQuantity key={index} index={index} handleChange={this.handleChange} />
+        );
         const averagePrice = this.state.averagePrice.reduce((acc, cur) => {
             const totalPrice = acc.totalPrice + cur.totalPrice;
             const totalShares = acc.totalShares + cur.totalShares;
@@ -24,7 +27,7 @@ class BasicUI extends React.Component {
                 <h1>Total Amount : {totalPrice}</h1>
                 <h1>Total Shares : {totalShares}</h1>
                 <h1>Average Price : {totalPrice / totalShares || 0.0}</h1>
-                <PriceQuantity index="0" handleChange={this.handleChange} />
+                {priceQuantityArr.map(priceQuantity => priceQuantity)}
             </div>
         );
     }
