@@ -30,12 +30,22 @@ export default class Calculator extends React.Component {
             return {averagePrice, keyTracker};
         });
     }
+
+    deleteRow = event => {
+        const key = event.target.getAttribute('key-id');
+        this.setState(state => {
+            let {averagePrice} = state;
+            delete(averagePrice[key]);
+            return averagePrice;
+        });
+    }
     
     render() {
         const averagePriceKeys = Object.keys(this.state.averagePrice);
         const priceQuantityArr = averagePriceKeys.map((key) =>
             <React.Fragment key={key}>
-                <PriceQuantity index={key} handleChange={this.handleChange} data={this.state.averagePrice[key]} />
+                <PriceQuantity index={key} handleChange={this.handleChange} data={this.state.averagePrice[key]} deleteRow={this.deleteRow}
+                removeButton={averagePriceKeys.length > 1} />
                 <br />
             </React.Fragment>
         );
@@ -93,13 +103,15 @@ class PriceQuantity extends React.Component {
     }
 
     render() {
+        const removeButton = this.props.removeButton? <button key-id={this.props.index} onClick={this.props.deleteRow}>X</button> : '';
         return(
             <React.Fragment>
                 <input type="number" name="price" placeholder="Price"
                 onChange={this.handlePriceChange} />{' * '}
                 <input type="number" name="quantity" placeholder="Quantity"
                 onChange={this.handleQuantityChange} />
-                {` = ${this.state.totalPrice}`}
+                {` = ${this.state.totalPrice} `}
+                {removeButton}
             </React.Fragment>
         );
     }
