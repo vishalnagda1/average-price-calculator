@@ -2,22 +2,29 @@ import React from 'react';
 
 class BasicUI extends React.Component {
     state = {
-        averagePrice: [0.0]
+        averagePrice: [{totalPrice: 0.0, totalShares: 0}]
     }
 
-    handleChange = (index, price = 0.0) => {
-        console.log({index});
-        console.log({price});
+    handleChange = (index, totalPrice = 0.0, totalShares = 0) => {
         const averagePrice = [...this.state.averagePrice];
-        console.log({averagePrice});
-        averagePrice[index] = price;
+        averagePrice[index]['totalPrice'] = totalPrice;
+        averagePrice[index]['totalShares'] = totalShares;
         this.setState(state => ({averagePrice}));
     }
     
     render() {
+        const averagePrice = this.state.averagePrice.reduce((acc, cur) => {
+            const totalPrice = acc.totalPrice + cur.totalPrice;
+            const totalShares = acc.totalShares + cur.totalShares;
+            return {totalPrice, totalShares};
+        });
+        console.log(averagePrice);
+        const {totalPrice, totalShares} = averagePrice;
         return(
             <div>
-                <h1>Average Price : {this.state.averagePrice}</h1>
+                <h1>Total Amount : {totalPrice}</h1>
+                <h1>Total Shares : {totalShares}</h1>
+                <h1>Average Price : {totalPrice / totalShares || 0.0}</h1>
                 <PriceQuantity index="0" handleChange={this.handleChange} />
             </div>
         );
@@ -35,7 +42,7 @@ class PriceQuantity extends React.Component {
         this.setState(state => ({totalPrice: state.price * state.quantity}));
         this.setState(state => {
             const totalPrice = state.price * state.quantity;
-            this.props.handleChange(this.props.index, totalPrice);
+            this.props.handleChange(this.props.index, totalPrice, state.quantity);
             return {totalPrice};
         })
     }
