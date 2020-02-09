@@ -2,7 +2,8 @@ import React from 'react';
 
 export default class Calculator extends React.Component {
     state = {
-        averagePrice: {0: {totalPrice: 0.0, totalShares: 0}}
+        averagePrice: {0: {totalPrice: 0.0, totalShares: 0}},
+        keyTracker: 0
     }
 
     handleChange = (key, totalPrice = 0.0, totalShares = 0) => {
@@ -12,13 +13,14 @@ export default class Calculator extends React.Component {
         this.setState(state => ({averagePrice}));
     }
 
-    // addRow = () => {
-    //     this.setState(state => {
-    //         const {averagePrice} = state;
-    //         averagePrice.push({totalPrice: 0.0, totalShares: 0});
-    //         return averagePrice;
-    //     });
-    // }
+    addRow = () => {
+        this.setState(state => {
+            let {averagePrice, keyTracker} = state;
+            keyTracker += 1;
+            averagePrice[keyTracker] = {totalPrice: 0.0, totalShares: 0};
+            return {averagePrice, keyTracker};
+        });
+    }
 
     // removeRow = () => {
     //     this.setState(state => {
@@ -37,9 +39,9 @@ export default class Calculator extends React.Component {
             </React.Fragment>
         );
 
-        // const removeButton = () => {
-        //     return this.state.averagePrice.length > 1 && <button onClick={this.removeRow}>Remove Row</button>
-        // }
+        const removeButton = () => {
+            return averagePriceKeys.length > 1 && <button onClick={this.removeRow}>Remove Row</button>
+        }
         const averagePriceArr = averagePriceKeys.map(key => this.state.averagePrice[key]);
         const averagePrice = averagePriceArr.reduce((acc, cur) => {
             const totalPrice = acc.totalPrice + cur.totalPrice || 0.0;
@@ -54,8 +56,8 @@ export default class Calculator extends React.Component {
                 <h1>Total Shares : {totalShares}</h1>
                 <h1>Average Price : {totalPrice / totalShares || 0.0}</h1>
                 {priceQuantityArr.map(priceQuantity => priceQuantity)}
-                {/* <button onClick={this.addRow}>Add Row</button> */}
-                {/* {removeButton()} */}
+                <button onClick={this.addRow}>Add Row</button>
+                {removeButton()}
             </div>
         );
     }
