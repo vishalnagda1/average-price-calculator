@@ -5,12 +5,12 @@ export default class Calculator extends React.Component {
         averagePrice: {0: {totalPrice: 0.0, totalShares: 0}}
     }
 
-    // handleChange = (index, totalPrice = 0.0, totalShares = 0) => {
-    //     const averagePrice = [...this.state.averagePrice];
-    //     averagePrice[index]['totalPrice'] = totalPrice;
-    //     averagePrice[index]['totalShares'] = totalShares;
-    //     this.setState(state => ({averagePrice}));
-    // }
+    handleChange = (key, totalPrice = 0.0, totalShares = 0) => {
+        const {averagePrice} = this.state;
+        averagePrice[key].totalPrice = totalPrice;
+        averagePrice[key].totalShares = totalShares;
+        this.setState(state => ({averagePrice}));
+    }
 
     // addRow = () => {
     //     this.setState(state => {
