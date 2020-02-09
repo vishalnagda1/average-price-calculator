@@ -1,6 +1,6 @@
 import React from 'react';
 
-class BasicUI extends React.Component {
+export default class Calculator extends React.Component {
     state = {
         averagePrice: [{totalPrice: 0.0, totalShares: 0}]
     }
@@ -98,5 +98,3 @@ class PriceQuantity extends React.Component {
         );
     }
 }
-
-export default BasicUI;
