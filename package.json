@@ -1,6 +1,6 @@
 {
   "name": "avg-share-price-calculator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "homepage": "https://vishalnagda1.github.io/average-share-price-calculator",
   "dependencies": {
