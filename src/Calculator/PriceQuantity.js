@@ -32,9 +32,9 @@ export default class PriceQuantity extends React.Component {
         const removeButton = this.props.removeButton? <button key-id={this.props.index} onClick={this.props.deleteRow}>X</button> : '';
         return(
             <React.Fragment>
-                <input type="number" name="price" placeholder="Price"
+                <input type="number" name="price" placeholder="Price per share"
                 onChange={this.handlePriceChange} />{' * '}
-                <input type="number" name="quantity" placeholder="Quantity"
+                <input type="number" name="quantity" placeholder="Total shares"
                 onChange={this.handleQuantityChange} />
                 {` = ${this.state.totalPrice.toFixed(2)} `}
                 {removeButton}
