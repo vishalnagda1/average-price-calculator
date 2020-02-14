@@ -1,29 +1,50 @@
 # Average Share Price Calculator
 
-The motive to implement this app is to get a rough idea of the new reflected price of stock before making an investment.
+The motivation to implement this application is to get an idea of the new reflected average/selling price of the share before making an actual investment. And it also helps to avoid errors occurs while doing manual calculations.
 
 
 
 ###### Let's understand with the below given example;
 
-*Let's assume you're already purchased Reliance's stock about a month ago. Below given is your investment details:*
+*Let's assume, currently you have 100 shares of Reliance at the rate of ₹ 1000 (purchase price of a share) in your demat account. So, below given are your current investment details:*
 
-**Total Capital Invested:** *₹ 42255*
+**Total Invested Capital:** *₹ 100,000*
 
-**Total Number of Shares:** *27*
+**Total Number of Shares (Quantity):** *100*
 
-**Purchasing rate of shares (average price):** *₹ 1565*
+**Price per Share (Purchase Price):** *₹ 1000*
 
-Now assume, the current price of Reliance's stock is *₹ 1285*. And to reduce your average stock price you planned to buy *82* more shares, so at this point your average price will be *₹ 1354.36*.
+**Average/Selling price per share:** *₹ 1000*
+
+Now assume, the current price of Reliance's stock is *₹ 800*. And now again you are planning to buy 50 more shares of Reliance at the rate of *₹ 800*. So, here are the new investment details:
+
+**Total Capital required:** *₹ 40,000*
+
+**Total Number of Shares (Quantity):** *50*
+
+**Price per Share (Purchase Price):** *₹ 800*
+
+**Average/Selling price per share for new investment:** *₹ 800*
 
 
+
+#### Now here is the million dollar question:
+
+***What is the final average/selling price of all 150 shares?***
 
 ###### Here are the steps you can follow:
 
-1. Enter **price** and **quantity** of shares you're already holding in your demat account.
-2. **Add new row** and enter the **current price** of the stock and **quantity** of stock you want to buy.
-
-*After following these steps the app will calculate the **total investment amount**, **total number of shares** and the **final average price** of the stock*.
+1. [Click Here to open the app](https://vishalnagda1.github.io/average-share-price-calculator/)
+2. In **Price per share** input field, enter the purchase price of the existing shares. (as per above example we have *₹ 1000*  is price per share).
+3. In **Total shares** input field, enter quantity of existing shares. (as per above example we have total *100*  quantity of shares).
+4. Click on **Add Row** button to add a new row for inputs.
+5. Now, in newly added row's **Price per share** field, enter the **current price** of the share. (as per above example, *₹ 800* is the current price of Reliance's stock).
+6. Next in newly added row's **Total shares** field, enter the number of new shares you want to buy. (as per above example, 50 new shares we're going to buy).
+7. Now check the value of **Total Investment**, **Total Shares** and **Average Price**. Below given are the resultant values as per the above example:
+   **Total Investment : 140000**
+   **Total Shares : 150**
+   **Average Price : 933.33**
+8. Done. Happy investing...
 
 
 
@@ -56,4 +77,3 @@ Now assume, the current price of Reliance's stock is *₹ 1285*. And to reduce y
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new pull request.
-
