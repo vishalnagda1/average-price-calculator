@@ -34,7 +34,7 @@ Now assume, the current price of Reliance's stock is *₹ 800*. And now again yo
 
 ###### Here are the steps you can follow:
 
-1. [Click Here to open the app](https://vishalnagda1.github.io/average-share-price-calculator/)
+1. [Click Here to open the app](https://apc.gitick.com/)
 2. In **Price per share** input field, enter the purchase price of the existing shares. (as per above example we have *₹ 1000*  is price per share).
 3. In **Total shares** input field, enter quantity of existing shares. (as per above example we have total *100*  quantity of shares).
 4. Click on **Add Row** button to add a new row for inputs.
