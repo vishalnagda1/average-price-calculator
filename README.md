@@ -66,13 +66,13 @@ Now assume, the current price of Reliance's stock is *₹ 800*. And now again yo
 2. Navigate to project directory in the terminal or command prompt.
 3. run `npm i`
 4. run `npm start`
-5. Your project server is running at [localhost:8000]()
+5. Your project server is running at [http://localhost:8000/](http://localhost:8000/)
 
 
 
 ### Contribution
 
-1. Fork it [https://github.com/TuxEducation/django_rest_scaffolding/fork](https://github.com/TuxEducation/django_rest_scaffolding/fork)
+1. Fork it [https://github.com/vishalnagda1/average-price-calculator/fork](https://github.com/vishalnagda1/average-price-calculator/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
